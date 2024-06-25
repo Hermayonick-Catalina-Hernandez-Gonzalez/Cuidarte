@@ -11,7 +11,7 @@
         <form method="POST" action="{{ route('medicos.update', $medico->id) }}">
             @csrf
             @method('PATCH')
-            
+
             <!-- Nombre -->
             <div class="mb-4">
                 <x-input-label for="nombre" :value="__('Nombre')" />

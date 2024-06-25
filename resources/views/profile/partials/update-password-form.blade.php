@@ -6,7 +6,7 @@
         </h2>
         <!-- Descripción del card -->
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Asegurate de que tu cuenta esté usando una contraseña larga y aleatoria para mantenerla segura.') }} 
+            {{ __('Asegurate de que tu cuenta esté usando una contraseña larga y aleatoria para mantenerla segura.') }}
         </p>
     </header>
 

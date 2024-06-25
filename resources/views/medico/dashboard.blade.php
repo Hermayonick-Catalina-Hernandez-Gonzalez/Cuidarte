@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
                                 <th class="py-3 px-6 text-left">Fecha</th>
                                 <th class="py-3 px-6 text-left">Hora</th>
                                 <th class="py-3 px-6 text-left">Tipo de Servicio</th>
+                                <th class="py-3 px-6 text-left">Estado de la consulta</th>
                                 <th class="py-3 px-6 text-left">Acción</th>
                             </tr>
                         </thead>
@@ -30,6 +31,7 @@ use Illuminate\Support\Facades\Auth;
                                 <td class="py-3 px-6 text-left">05/06/2021</td>
                                 <td class="py-3 px-6 text-left">13:00</td>
                                 <td class="py-3 px-6 text-left">Consulta General</td>
+                                <td class="py-3 px-6 text-left">Terminado</td>
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex space-x-2">
                                         <a href=""
