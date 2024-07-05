@@ -7,6 +7,7 @@ use App\Http\Controllers\CrearCitasMEDICOController;
 use App\Http\Controllers\CrearCitasSecretarioController;
 use App\Http\Controllers\Medico\MedicoController;
 use App\Http\Controllers\Paciente\PacienteController;
+use App\Http\Controllers\PagosController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistroMedicosADMINController;
 use App\Http\Controllers\RegistroPacientesADMINController;
@@ -83,5 +84,5 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function(){
     Route::post('secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'registro_paciente'])->name('secretario.registro-pacientes.store'); //* POST a registrar pacientes a BD
     Route::get('/secretario/consultas', [ConsultasSECRETARIOController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
     Route::get('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'index'])->name('secretario.crear-cita'); //* Vista para crear citas
+    Route::get('/secretario/pagos', [PagosController::class, 'index'])->name('secretario.pagos');//* Vista para pagos
 });
-    
