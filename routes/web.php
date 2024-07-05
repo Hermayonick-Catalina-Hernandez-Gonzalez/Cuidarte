@@ -7,7 +7,6 @@ use App\Http\Controllers\CrearCitasMEDICOController;
 use App\Http\Controllers\CrearCitasSecretarioController;
 use App\Http\Controllers\Medico\MedicoController;
 use App\Http\Controllers\Paciente\PacienteController;
-use App\Http\Controllers\PagosController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistroMedicosADMINController;
 use App\Http\Controllers\RegistroPacientesADMINController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\RegistroPacientesSECRETARIOController;
 use App\Http\Controllers\RegistroSecretarioADMINController;
 use App\Http\Controllers\RegistroServiciosController;
 use App\Http\Controllers\Secretario\SecretarioController;
+use App\Http\Controllers\PagosController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta principal para iniciar sesión
@@ -82,7 +82,9 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function(){
     Route::get('/secretario/dashboard', [SecretarioController::class, 'index'])->name('secretario.dashboard'); //* Vista principal del secretario
     Route::get('/secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'index'])->name('secretario.registro-pacientes'); //* Vista para registrar pacientes
     Route::post('secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'registro_paciente'])->name('secretario.registro-pacientes.store'); //* POST a registrar pacientes a BD
-    Route::get('/secretario/consultas', [ConsultasSECRETARIOController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
+    Route::get('/secretario/consultas', [CrearCitasSecretarioController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
     Route::get('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'index'])->name('secretario.crear-cita'); //* Vista para crear citas
+    Route::post('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'store'])->name('secretario.crear-cita.store'); //* POST a crear citas
     Route::get('/secretario/pagos', [PagosController::class, 'index'])->name('secretario.pagos');//* Vista para pagos
 });
+
