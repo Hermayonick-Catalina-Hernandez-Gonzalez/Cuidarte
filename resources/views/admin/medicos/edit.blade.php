@@ -2,12 +2,12 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Editar Médico') }}
         </h2>
     </x-slot>
 
-    <div class="mt-6 dark:bg-gray-800 p-6 rounded-lg shadow">
+    <div class="mt-6 bg-gray-200 p-6 rounded-lg shadow">
         <form method="POST" action="{{ route('medicos.update', $medico->id) }}">
             @csrf
             @method('PATCH')

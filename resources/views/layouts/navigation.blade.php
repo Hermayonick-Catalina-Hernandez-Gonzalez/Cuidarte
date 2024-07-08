@@ -35,6 +35,9 @@
                         <x-nav-link href="{{ route('admin.registro-servicios') }}" :active="request()->routeIs('admin.registro-servicios')" class="text-black">
                             {{ __('Registro Servicios') }}
                         </x-nav-link>
+                        <x-nav-link href="{{ route('admin.registro-productos') }}" :active="request()->routeIs('admin.registro-productos')" class="text-black">
+                            {{ __('Registro Productos') }}
+                        </x-nav-link>
                     @endif
 
                     <!-- medico links -->
@@ -61,7 +64,8 @@
                         <x-nav-link href="{{ route('secretario.consultas') }}" :active="request()->routeIs('secretario.consultas')" class="text-black">
                             {{ __('Citas Agendadas') }}
                         </x-nav-link>
-                        <x-nav-link  href="{{route('secretario.pagos')}}" :active="request()->routeIs('secretario.pagos')" class="text-black">
+
+                        <x-nav-link  href="{{ route('secretario.pagos') }}" :active="request()->routeIs('secretario.pagos')" class="text-black">
                             {{ __('Pagos De Consultas') }}
                         </x-nav-link>
                     @endif
@@ -162,10 +166,4 @@
         color: black !important;
     }
 
-    @media (prefers-color-scheme: dark) {
-        .custom-navbar {
-            background-color: #3FBBB4;
-            border-bottom: 1px solid #3FBBB4;
-        }
-    }
 </style>
