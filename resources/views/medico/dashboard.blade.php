@@ -14,14 +14,8 @@
     <x-app-layout>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        <!-- Te da la bienvenida con el nombre del usuario -->
-                        {{ __('Bienvenido Medico ' . Auth::user()->nombre . ' ' . Auth::user()->apellido . '!') }}
-                    </div>
-                </div>
                 <div class="mt-6 bg-gray-200 p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-900">Citas Medicas</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 ">Citas Medicas</h3>
                     <!-- Buscador -->
                     <div class="flex justify-between items-center mb-4">
                         <input type="text" id="search" placeholder="Buscar por nombre de paciente..."
@@ -29,9 +23,10 @@
                     </div>
                     <!-- Tabla -->
                     <div class="overflow-x-auto flex justify-center">
-                        <table id="appointmentsTable" class="min-w-full bg-white rounded-lg shadow-md">
+                        <table class="min-w-full bg-white  rounded-lg shadow-md" id="appointmentsTable">
                             <thead>
-                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <tr
+                                    class="bg-gray-200  text-gray-600 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Paciente</th>
                                     <th class="py-3 px-6 text-left">Fecha</th>
                                     <th class="py-3 px-6 text-left">Hora</th>
@@ -39,8 +34,8 @@
                                     <th class="py-3 px-6 text-left">Acción</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-gray-600 text-sm">
-                                <tr class="border-b border-gray-200">
+                            <tbody class="text-gray-600  text-sm">
+                                <tr class="border-b border-gray-200 ">
                                     <td class="py-3 px-6 text-left">Diego Ortiz</td>
                                     <td class="py-3 px-6 text-left">05/06/2021</td>
                                     <td class="py-3 px-6 text-left">13:00</td>
@@ -51,14 +46,13 @@
                                                 class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                                 Confirmar Cita
                                             </a>
-                                            <a href="./consultas.blade.php"
+                                            <a href="{{ route('consultas') }}"
                                                 class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                                 Generar Consulta
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Puedes añadir más filas aquí -->
                             </tbody>
                         </table>
                     </div>
