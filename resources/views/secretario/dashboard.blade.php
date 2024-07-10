@@ -31,7 +31,7 @@
 
                     @foreach ($servicios as $servicio)
                         @php
-                            $imageName = $servicio->content ?? 'Logo.png'; // Usar una imagen predeterminada si es null
+                            $imageName = $servicio->content ?? 'Icono.png'; // Usar una imagen predeterminada si es null
                             $imagePath = asset('images/' . $imageName);
                         @endphp
                         <a href="{{ route('secretario.crear-cita', ['servicio' => $servicio->nombre]) }}"
