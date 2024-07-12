@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto; 
+use App\Models\Producto;
 
 class RegistroProductoADMINController extends Controller
 {
