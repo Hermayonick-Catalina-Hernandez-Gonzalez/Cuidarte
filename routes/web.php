@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\RegistroProductoADMINController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroProductoSECRETARIOController;
+use App\Http\Controllers\ImageController;
 
 // Ruta principal para iniciar sesión
 Route::get('/', function () {
@@ -99,7 +100,5 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function () {
     Route::get('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'index'])->name('secretario.registro-productos');
     Route::post('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'store'])->name('secretario.registro-productos');
 });
-
-use App\Http\Controllers\ImageController;
 
 Route::get('/imagen/{id}', [ImageController::class, 'show'])->name('imagen.show');
