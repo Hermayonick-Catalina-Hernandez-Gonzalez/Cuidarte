@@ -17,10 +17,11 @@ use App\Http\Controllers\RegistroServiciosController;
 use App\Http\Controllers\Secretario\SecretarioController;
 use App\Http\Controllers\PagosController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\RegistroEnfermeroController;
 use App\Http\Controllers\RegistroProductoADMINController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroProductoSECRETARIOController;
-use App\Http\Controllers\ImageController;
+
 
 // Ruta principal para iniciar sesión
 Route::get('/', function () {
@@ -76,10 +77,28 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function () {
     Route::post('/admin/registro-medicos', [RegistroMedicosADMINController::class, 'registro_medico'])->name('admin.registro-medicos.store'); //* POST a registrar médicos a BD
     Route::get('/admin/registro-secretarios', [RegistroSecretarioADMINController::class, 'index'])->name('admin.registro-secretarios'); //* Vista para registrar secretarios
     Route::post('/admin/registro-secretarios', [RegistroSecretarioADMINController::class, 'registro_secretarios'])->name('admin.registro-secretarios.store'); //* POST a registrar secretarios a BD
+    /**
+     * Rutas para servicios
+     */
     Route::get('/admin/registro-servicios', [RegistroServiciosController::class, 'index'])->name('admin.registro-servicios'); //* Vista para registrar servicios
-    Route::post('/admin/registro-servicios', [RegistroServiciosController::class, 'store'])->name('admin.registro-servicios.store'); //* POST a registrar servicios a BD
+    Route::get('/admin/registro-servicios/{servicio}/edit', [RegistroServiciosController::class, 'edit'])->name('registro-servicios.edit'); //* Vista para editar servicios
+    Route::patch('/admin/registro-servicios/{servicio}', [RegistroServiciosController::class, 'update'])->name('registro-servicios.update'); //* PATCH a actualizar servicios
+    Route::delete('/admin/registro-servicios/{servicio}', [RegistroServiciosController::class, 'destroy'])->name('registro-servicios.destroy'); //* DELETE a eliminar servicios
 
-    //Productos
+    /**
+     * Rutas para enfermeros
+     */
+    Route::get('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'index'])->name('admin.registro-enfermeros'); //* Vista para registrar enfermeros
+    Route::post('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'registro_enfermeros'])->name('admin.registro-enfermeros.store'); //* POST a registrar enfermeros a BD
+
+    /**
+     * Rutas para modificar la información de los productos
+     *
+     */
+    Route::get('/admin/registro-productos/{productos}/edit', [RegistroProductoADMINController::class, 'edit'])->name('registro-productos.edit'); //* Vista para editar pacientes
+    Route::patch('/admin/registro-productos/{productos}', [RegistroProductoADMINController::class, 'update'])->name('registro-productos.update'); //* PATCH a actualizar pacientes
+    Route::delete('/admin/registro-productos/{productos}', [RegistroProductoADMINController::class, 'destroy'])->name('registro-productos.destroy'); //* DELETE a eliminar pacientes
+
     Route::get('/admin/registro-productos', [RegistroProductoADMINController::class, 'index'])->name('admin.registro-productos');
     Route::post('/admin/registro-productos', [RegistroProductoADMINController::class, 'store'])->name('admin.registro-productos.store');
 });
@@ -90,7 +109,7 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function () {
     Route::get('/secretario/dashboard', [SecretarioController::class, 'index'])->name('secretario.dashboard'); //* Vista principal del secretario
     Route::get('/secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'index'])->name('secretario.registro-pacientes'); //* Vista para registrar pacientes
     Route::post('secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'registro_paciente'])->name('secretario.registro-pacientes.store'); //* POST a registrar pacientes a BD
-    Route::get('/secretario/consultas', [ConsultasSecretarioController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
+    Route::get('/secretario/consultas', [CrearCitasSecretarioController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
     Route::get('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'index'])->name('secretario.crear-cita'); //* Vista para crear citas
     Route::post('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'store'])->name('secretario.crear-cita.store'); //* POST a crear citas
     Route::get('/secretario/citas', [CrearCitasSecretarioController::class, 'getCitas'])->name('secretario.citas');
@@ -100,5 +119,7 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function () {
     Route::get('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'index'])->name('secretario.registro-productos');
     Route::post('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'store'])->name('secretario.registro-productos');
 });
+
+use App\Http\Controllers\ImageController;
 
 Route::get('/imagen/{id}', [ImageController::class, 'show'])->name('imagen.show');
