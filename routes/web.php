@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Admin\AdministradorController;
 use App\Http\Controllers\ConsultasMEDICOController;
 use App\Http\Controllers\ConsultasSECRETARIOController;
