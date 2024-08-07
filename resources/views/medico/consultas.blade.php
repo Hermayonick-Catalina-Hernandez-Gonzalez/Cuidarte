@@ -25,9 +25,7 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div class="relative">
                                 <label for="paciente" class="block font-medium text-sm ">Nombre del paciente</label>
-                                <input id="paciente"
-                                    class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
-                                    name="paciente">
+                                <input id="paciente" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" name="paciente" value="{{ $paciente ?? '' }}">
                             </div>
                             <div>
                                 <label for="motivo_consulta" class="block font-medium text-sm ">Motivo de la
