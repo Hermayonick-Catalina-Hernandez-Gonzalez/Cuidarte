@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body>
     <x-app-layout>
         <x-slot name="header">
@@ -138,33 +136,38 @@
                     body: formData,
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                            'content')
+                        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     }
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data); // Log para depuración
                     if (data.success) {
                         alert(data.success);
                         document.getElementById('modal').classList.add('hidden');
-                        data.updatedProducts.forEach(product => {
-                            const row = document.querySelector(`.producto[data-id="${product.id}"]`);
+                        // Actualizar la tabla con las nuevas cantidades
+                        data.updatedProducts.forEach(producto => {
+                            const row = document.querySelector(`tr[data-id="${producto.id}"] .cantidad`);
                             if (row) {
-                                row.querySelector('.cantidad').textContent = product.cantidad;
+                                row.textContent = producto.cantidad;
                             }
                         });
                     } else {
-                        alert(data.error || 'Error inesperado');
+                        alert(data.error);
                     }
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al realizar la venta');
-                });
+                .catch(error => console.error('Error:', error));
         });
-        addProducto();
+
+        document.querySelectorAll('#search').forEach(searchInput => {
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                document.querySelectorAll('.producto').forEach(row => {
+                    const nombre = row.querySelector('td').textContent.toLowerCase();
+                    row.style.display = nombre.includes(searchValue) ? '' : 'none';
+                });
+            });
+        });
+
     </script>
 </body>
-
 </html>
