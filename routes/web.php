@@ -45,9 +45,12 @@ Route::middleware(['auth', 'MedicoMiddleware'])->group(function () {
     Route::get('dashboard', [MedicoController::class, 'index'])->name('dashboard'); //* Vista principal del médico
     Route::get('registro-pacientes', [RegistroPacientesMEDICOController::class, 'index'])->name('registro-pacientes'); //* Vista para registrar pacientes
     Route::post('registro-pacientes', [RegistroPacientesMEDICOController::class, 'registro_paciente'])->name('registro-pacientes.store'); //* POST a registrar pacientes a BD
+    Route::get('ver-consulta/{paciente_id}', [ConsultasMEDICOController::class, 'show'])->name('consultas.show');
     Route::get('consultas', [ConsultasMEDICOController::class, 'index'])->name('consultas');
+    Route::post('consultas', [ConsultasMEDICOController::class, 'storeConsulta'])->name('consultas.storeConsulta'); //* POST a registrar consultas a BD
+    Route::get('ver-consulta/{paciente_id}', [ConsultasMEDICOController::class, 'show'])->name('consultas.show');
     Route::get('crear-cita', [CrearCitasMEDICOController::class, 'index'])->name('crear-cita');
-    Route::post('/medico/crear-cita', [CrearCitasMEDICOController::class, 'store'])->name('medico.crear-cita');
+    Route::post('crear-cita', [CrearCitasMEDICOController::class, 'store'])->name('crear-cita.store');
 });
 
 //* Rutas para el administrador
@@ -124,7 +127,7 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function () {
     Route::get('/secretario/producto', [ProductosController::class, 'index'])->name('secretario.medicamentos'); //* Vista para productos
     //Productos
     Route::get('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'index'])->name('secretario.registro-productos');
-    Route::post('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'store'])->name('secretario.registro-productos');
+    Route::post('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'store'])->name('secretario.registro-productos.store');
 
     //rutas para las citas agendadas
     Route::get('/secretario/consultas', [ConsultasSecretarioController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
@@ -138,3 +141,5 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function () {
 use App\Http\Controllers\ImageController;
 
 Route::get('/imagen/{id}', [ImageController::class, 'show'])->name('imagen.show');
+Route::get('/productos/{id}', [ProductosController::class, 'show'])->name('productos.show');
+Route::post('/ventas', [ProductosController::class, 'store'])->name('ventas.store');

@@ -22,4 +22,3 @@ class AdministradorController extends Controller
         return view('admin.dashboard', compact('pacientes', 'medicos', 'secretarios', 'enfermeros', 'servicios', 'productos'));
     }
 }
-

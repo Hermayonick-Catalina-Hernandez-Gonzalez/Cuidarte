@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Medico;
+use App\Models\Cita;
 use App\Models\Paciente;
 use App\Models\Servicios;
 use App\Models\User;
-use App\Models\Cita;
+use Illuminate\Http\Request;
 
 class CrearCitasMEDICOController extends Controller
 {
@@ -18,7 +17,7 @@ class CrearCitasMEDICOController extends Controller
         $servicios = Servicios::all(); // Obtener todos los servicio
         $medicos = User::where('role', User::ROL_MEDICO)->get(); // Obtener todos los médicos
         $citas = Cita::with('medico')->get(); // Obtener todas las citas
-        return view('medico.crear-cita', compact('servicio', 'pacientes', 'servicios', 'medicos', 'citas'));
+        return view('medico.crear-cita', compact('pacientes', 'servicio', 'servicios', 'medicos', 'citas'));
     }
 
     public function store(Request $request)
@@ -33,6 +32,6 @@ class CrearCitasMEDICOController extends Controller
         ]);
 
         Cita::create($validateData);
-        return redirect()->route('secretario.crear-cita')->with('success', 'Cita creada con éxito');
+        return redirect()->route('crear-cita')->with('status', 'Cita creada correctamente');
     }
 }

@@ -16,13 +16,15 @@ return new class extends Migration
         if(!Schema::hasTable('citas')){
             Schema::create('citas', function (Blueprint $table) {
                 $table->id();
-                $table->string('pacientes');
+                $table->unsignedBigInteger('pacientes');
                 $table->time('hora');
                 $table->date('fecha');
                 $table->string('servicio');
                 $table->foreignId('medico_id')->nullable()->constrained('users')->onDelete('set null'); // Nuevo campo para almacenar el ID del médico
                 $table->string('Descripcion');
                 $table->timestamps();
+
+                $table->foreign('pacientes')->references('id')->on('pacientes')->onDelete('cascade');
             });
         }
     }
