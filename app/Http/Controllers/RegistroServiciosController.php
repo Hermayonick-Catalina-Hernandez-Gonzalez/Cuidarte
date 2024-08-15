@@ -43,4 +43,13 @@ class RegistroServiciosController extends Controller
 
         return redirect()->back()->with('success', 'Servicio registrado con éxito.');
     }
+
+    // Método para eliminar un servicio
+    public function destroy($id)
+    {
+        $servicio = Servicios::findOrFail($id);
+        $servicio->delete();
+
+        return response()->json(['success' => true]);
+    }
 }

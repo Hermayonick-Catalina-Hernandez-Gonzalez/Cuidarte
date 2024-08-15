@@ -8,12 +8,14 @@
     <!-- Incluye Tailwind CSS desde CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluye SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <x-app-layout>
         <x-slot name="header">
-            <h2 class="font-semibold text-xl text-black  leading-tight">
+            <h2 class="font-semibold text-xl text-black leading-tight">
                 {{ __('Registro de Pacientes') }}
             </h2>
         </x-slot>
@@ -28,15 +30,15 @@
                             <x-input-label for="nombre" :value="__('Nombre(s)*')" />
                             <x-text-input id="nombre" class="block mt-1 w-full" type="text" name="nombre"
                                 :value="old('nombre')" required autofocus autocomplete="nombre" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('nombre')" class="mt-2" />
                         </div>
 
                         <!-- Apellidos -->
                         <div class="mt-4">
                             <x-input-label for="apellido" :value="__('Apellidos*')" />
                             <x-text-input id="apellido" class="block mt-1 w-full" type="text" name="apellido"
-                                :value="old('apellidos')" required autocomplete="apellido" />
-                            <x-input-error :messages="$errors->get('apellidos')" class="mt-2" />
+                                :value="old('apellido')" required autocomplete="apellido" />
+                            <x-input-error :messages="$errors->get('apellido')" class="mt-2" />
                         </div>
 
                         <!-- Fecha de nacimiento -->
@@ -73,7 +75,7 @@
                         </div>
 
                         <div class="flex items-center justify-center mt-4">
-                            <x-primary-button class="ms-4">
+                            <x-primary-button type="submit" class="ms-4">
                                 {{ __('Registrar') }}
                             </x-primary-button>
                         </div>
@@ -81,6 +83,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- Script para mostrar el mensaje de éxito -->
+        @if (session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: "¡Registro Completado!",
+                        text: "{{ session('success') }}", // Muestra el mensaje de sesión
+                        icon: "success"
+                    });
+                });
+            </script>
+        @endif
+
     </x-app-layout>
 </body>
 

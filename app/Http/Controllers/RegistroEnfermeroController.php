@@ -43,8 +43,10 @@ class RegistroEnfermeroController extends Controller
 
             event(new Registered($enfermero));
 
-            return redirect()->route('admin.registro-enfermeros.index')
-            ->with('success', 'Enfermero registrado correctamente');
+            session()->flash('success', '¡Registro completado exitosamente!');
+
+            return redirect()->back()->with('success', '¡Registro completado exitosamente!');
+
         } catch (\Exception $e) {
             session()->flash('error', 'Error al registrar el usuario');
 

@@ -8,6 +8,8 @@
     <!-- Incluye Tailwind CSS desde CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Incluye SweetAlert2 -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -93,7 +95,7 @@
                         </div>
 
                         <div class="flex items-center justify-center mt-4">
-                            <x-primary-button class="ms-4">
+                            <x-primary-button type="submit" class="ms-4">
                                 {{ __('Registrar') }}
                             </x-primary-button>
                         </div>
@@ -101,6 +103,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- Script para mostrar el mensaje de éxito -->
+        @if(session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: "¡Registro Completado!",
+                        text: "{{ session('success') }}",
+                        icon: "success"
+                    });
+                });
+            </script>
+        @endif
+
     </x-app-layout>
 </body>
 

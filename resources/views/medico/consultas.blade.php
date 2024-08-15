@@ -212,9 +212,11 @@
             </div>
         </div>
         </div>
+        
     </x-app-layout>
 
     <script>
+
         document.getElementById('add-medicamento').addEventListener('click', function() {
             const container = document.getElementById('medicamentos-container');
             const medicamentoHTML = `
@@ -284,7 +286,7 @@
             select.addEventListener('change', function() {
                 const productoId = this.value;
                 const cantidadInput = this.closest('.medicamento').querySelector(
-                'input[name="cantidad[]"]');
+                    'input[name="cantidad[]"]');
 
                 fetch(`/productos/${productoId}`)
                     .then(response => response.json())

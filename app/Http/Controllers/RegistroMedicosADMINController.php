@@ -38,7 +38,7 @@ class RegistroMedicosADMINController extends Controller
                 'role' => $request->role,
                 'profesion' => $request->profesion,
             ]);
-    
+
             if ($request->role === 'Médico') {
                 $user->medico()->create([
                     'profesion' => $request->profesion,
@@ -51,7 +51,7 @@ class RegistroMedicosADMINController extends Controller
 
             // Auth::login($user);
 
-            //session()->flash('success', 'Usuario registrado correctamente');
+            session()->flash('success', 'Usuario registrado correctamente');
 
             return redirect()->back();
         } catch (\Exception $e) {

@@ -24,6 +24,7 @@ class RegistroPacientesADMINController extends Controller
         ]);
 
         Paciente::create($validatedData);
-        return redirect()->route('registro-pacientes')->with('success', 'Paciente registrado correctamente');
+        return redirect()->route('admin.registro-pacientes')
+            ->with('success', '¡Registro completado exitosamente!');
     }
 }

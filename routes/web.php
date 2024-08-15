@@ -101,7 +101,7 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function () {
      * Rutas para enfermeros
      */
     Route::get('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'index'])->name('admin.registro-enfermeros'); //* Vista para registrar enfermeros
-    Route::post('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'registro_enfermeros'])->name('admin.registro-enfermeros.store'); //* POST a registrar enfermeros a BD
+    Route::post('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'registro_enfermeros'])->name('admin.registro-enfermeros'); //* POST a registrar enfermeros a BD
 
     /**
      * Rutas para modificar la información de los productos
@@ -143,3 +143,5 @@ use App\Http\Controllers\ImageController;
 Route::get('/imagen/{id}', [ImageController::class, 'show'])->name('imagen.show');
 Route::get('/productos/{id}', [ProductosController::class, 'show'])->name('productos.show');
 Route::post('/ventas', [ProductosController::class, 'store'])->name('ventas.store');
+Route::get('/ver-ticket/{id}', [PagosController::class, 'generarTicket'])->name('ver.ticket');
+Route::delete('/servicios/{id}', [RegistroServiciosController::class, 'destroy'])->name('servicios.destroy');

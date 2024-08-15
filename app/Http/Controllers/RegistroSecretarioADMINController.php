@@ -48,16 +48,12 @@ class RegistroSecretarioADMINController extends Controller
             }
 
             event(new Registered($user));
-
-            // Auth::login($user);
-
-            //session()->flash('success', 'Usuario registrado correctamente');
+            session()->flash('success', 'Usuario registrado correctamente');
 
             return redirect()->back();
         } catch (\Exception $e) {
             session()->flash('error', 'Error al registrar el usuario');
-
-            return redirect()->back()->withInput();
+            return redirect()->back();
         }
     }
 }

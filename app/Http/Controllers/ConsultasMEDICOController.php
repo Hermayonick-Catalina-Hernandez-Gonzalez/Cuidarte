@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cita;
 use App\Models\Consulta;
 use App\Models\Enfermero;
 use App\Models\Medico;
@@ -72,7 +71,7 @@ class ConsultasMEDICOController extends Controller
                  $producto->save();
              }
          }
-         
+
         return redirect()->route('dashboard')->with('success', 'Consulta creada con éxito');
     }
 
