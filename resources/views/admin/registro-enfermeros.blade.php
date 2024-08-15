@@ -24,7 +24,7 @@
     <div class="py-12 flex justify-center">
         <div class="max-w-lg w-full sm:px-6 lg:px-8">
             <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <form method="post" action="{{ route('admin.registro-enfermeros.store') }}">
+                <form method="post" action="{{ route('admin.registro-enfermeros') }}">
                     @csrf
                     <!-- Nombre -->
                     <div>
