@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cita;
 use App\Models\Servicios;
 
-class ConsultasSecretarioController extends Controller
+class ConsultasSECRETARIOController extends Controller
 {
     public function index(Request $request)
     {;
